@@ -12,6 +12,10 @@ get '/' do
   check_for_conflicts_in(nearby_events, new_event)
 end
 
+get '/order' do
+  File.read('index.html')
+end
+
 ESRI_TOKEN = 'L-cMHLjxYWKHH5hByflVAuJp8XTqmsXo0TL0OhVP9cbKqfiX8PGoxZcK59k-rMGczv9HhV3VCGT70qXgq6sv8HnMl2SxH5HMnXfKjL3YzOa2sK_Vo4tOXzzrn2ME55g1Pgxb8-FgAjWKaF5f93fkrg..'
 OUTLOOK_AUTH = 'Basic aXZhbkB0aGVtd29ya3Mub25taWNyb3NvZnQuY29tOlI1a2g1ZHI1'
 
