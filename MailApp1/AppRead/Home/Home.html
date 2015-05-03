@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>Meeting Conflicts</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
+	
+	<link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+	<script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+	
+	<link href="../App.css" rel="stylesheet" type="text/css" />
+	<script src="../App.js" type="text/javascript"></script>
+	
+	<link href="Home.css" rel="stylesheet" type="text/css" />
+	<script src="Home.js" type="text/javascript"></script>
+</head>
+<body>
+	<!-- Page content -->
+	<div id="content-main">
+		<div class="padding">
+			<p><strong>If there are any conflicts, you will see them below.</strong></p>
+			<p>For now, some debugging info:</p>
+			<table id="details">
+				<tr>
+					<th>Current appointment start:</th>
+					<td id="start"></td>
+				</tr>
+				<tr>
+					<th>Current appointment end:</th>
+					<td id="end"></td>
+				</tr>			
+				<tr>
+					<th>Conflicts:</th>
+					<td id="conflicts"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
