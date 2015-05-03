@@ -1,6 +1,6 @@
 machine:
   environment:
-    CODECLIMATE_REPO_TOKEN: 9ff4d5ad13167df56a70190d6d2f4e12da16396704f6359244e67270d0135343
+    CODECLIMATE_REPO_TOKEN: ddb0bf246687144629ff5fd8f9444c8e81a4dbe3e6e480e47914ba95bc71e381
 test:
   post:
     - rspec distance_evaluator_spec.rb

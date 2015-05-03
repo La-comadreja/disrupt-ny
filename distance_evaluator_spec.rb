@@ -1,3 +1,5 @@
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 require_relative './distance_evaluator'
 
 describe Object do
