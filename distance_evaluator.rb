@@ -1,4 +1,14 @@
+require 'sinatra'
+require 'thin'
 require 'rest_client'
+
+set :server, 'thin'
+
+get '/' do
+  event_list = '{"events": [{"address": "Columbia University, NY", "event_start": "7:00 PM", "event_end": "8:00 PM"}, {"address": "34 Sidney Place, Brooklyn, NY", "event_start": "8:30 PM", "event_end": "9:00 PM"}]}'
+  #params['test']
+  check_for_conflicts_in(event_list)
+end
 
 TOKEN = 'L-cMHLjxYWKHH5hByflVAuJp8XTqmsXo0TL0OhVP9cbKqfiX8PGoxZcK59k-rMGczv9HhV3VCGT70qXgq6sv8HnMl2SxH5HMnXfKjL3YzOa2sK_Vo4tOXzzrn2ME55g1Pgxb8-FgAjWKaF5f93fkrg..'
 
@@ -33,5 +43,4 @@ def route(endpoints)
   JSON.parse(response)['routes']['features'].first['attributes']['Total_TravelTime'].to_i + 3
 end
 
-event_list = '{"events": [{"address": "Columbia University, NY", "event_start": "7:00 PM", "event_end": "8:00 PM"}, {"address": "34 Sidney Place, Brooklyn, NY", "event_start": "8:30 PM", "event_end": "9:00 PM"}]}'
-puts check_for_conflicts_in(event_list)
+# https://outlook.office365.com/api/v1.0/me/calendarview?startDateTime=2015-05-01T01:00:00Z&endDateTime=2015-05-03T23:00:00Z
