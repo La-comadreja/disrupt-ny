@@ -25,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  rack
   rest_client
   sinatra
   thin
