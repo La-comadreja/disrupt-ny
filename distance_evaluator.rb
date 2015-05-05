@@ -20,7 +20,8 @@ get '/AppRead' do
   File.read('MailApp1/AppRead/Home/Home.html')
 end
 
-ESRI_TOKEN = 'MeDe_j7fkrSjWAITAZaRsAqZHmiFM_swDiwDTAU4YYW8Z-09iclYZ9y2DR2aHvnDo7pF6ssFbwjDFzpjWtizU2XsKIYJN02EVv7jZmM3qnIT-crNhm2S3RNxnCbn0ErTHO40KmGoGumRSpMYWw5lJQ..'
+ESRI_CLIENT_ID = 'o7U4CF9NDgDtVryb'
+ESRI_CLIENT_SECRET = 'f331ecdd0fe74a7a996ec514319578dc'
 OUTLOOK_AUTH = 'Basic aXZhbkB0aGVtd29ya3Mub25taWNyb3NvZnQuY29tOlI1a2g1ZHI1'
 
 def find_nearby_events(parsed_param)
@@ -67,6 +68,15 @@ def geocode(address)
 end
 
 def route(endpoints)
-  response = RestClient.get("http://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve?token=#{ESRI_TOKEN}&stops=#{endpoints.join(';')}&f=json")
+  response = RestClient.get("http://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve?token=#{esri_token}&stops=#{endpoints.join(';')}&f=json")
   JSON.parse(response)['routes']['features'].first['attributes']['Total_TravelTime'].to_i + 3
+end
+
+def esri_token
+  getToken = Net::HTTP.post_form URI('https://www.arcgis.com/sharing/rest/oauth2/token'),
+    f: 'json',
+    client_id: ESRI_CLIENT_ID,
+    client_secret: ESRI_CLIENT_SECRET,
+    grant_type: 'client_credentials'
+  JSON.parse(getToken.body)['access_token']
 end
