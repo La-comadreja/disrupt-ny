@@ -7,9 +7,19 @@ set :server, 'thin'
 
 get '/' do
   event = params[:event]
+  callback = params.delete('callback') # jsonp
   new_event = JSON.parse(event)
   nearby_events = find_nearby_events(new_event)
-  check_for_conflicts_in(nearby_events, new_event)
+  json = check_for_conflicts_in(nearby_events, new_event)
+  
+  if callback
+    content_type :js
+    response = "#{callback}(#{json})"
+  else
+    content_type :json
+    response = json
+  end
+  response
 end
 
 get '/order' do
