@@ -5,6 +5,12 @@ require 'json'
 
 set :server, 'thin'
 
+before do
+  content_type :json
+  headers 'Access-Control-Allow-Origin' => '*',
+          'Access-Control-Allow-Methods' => ['GET']
+end
+
 get '/' do
   event = params[:event]
   callback = params.delete('callback') # jsonp
